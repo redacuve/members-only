@@ -17,5 +17,12 @@ class ApplicationController < ActionController::Base
 
   def sign_out
     cookies.delete(:remember_token)
+    @current_user = nil
   end
+
+  def logged?
+    !@current_user.nil?
+  end
+
+
 end

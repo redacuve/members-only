@@ -1,0 +1,9 @@
+
+<%= form_with(url: posts_path, local: true) do |f| %>
+<%= f.hidden_field :author_id, value: @current_user.id %>
+<%= f.label :title %>
+<%= f.text_field :title%>
+<%= f.label :body%>
+<%= f.text_area :body, size:"60x12" %>
+<%= f.submit "Create Post" %>
+<% end %>
