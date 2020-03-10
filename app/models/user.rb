@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   attr_accessor :remember_token
 
-  before_create :create_remember_token
+  before_save :remember
 
   has_secure_password
 
@@ -13,11 +13,11 @@ class User < ApplicationRecord
     Digest::SHA1.hexdigest(string)
   end
 
-
-  
-  def create_remember_token
-    self.remember_token = User.digest(User.new_token)
+  def remember
+    self.remember_token = User.new_token
   end
 
-
+  # def create_remember_token
+  #   self.remember_token = User.new_token
+  # end
 end
