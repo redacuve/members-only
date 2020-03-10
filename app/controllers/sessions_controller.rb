@@ -5,11 +5,13 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:email])
     if user &.authenticate(params[:password])
       login user
-      render html: "logged"
+      redirect_to user
     else
       render 'new'
-    end    
+    end
   end
 
- 
+  def destroy
+    sign_out
+  end
 end
