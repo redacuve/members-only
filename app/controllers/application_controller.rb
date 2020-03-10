@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   end
 
   def logged?
-    !@current_user.nil?
+    !current_user.nil?
   end
 
 
