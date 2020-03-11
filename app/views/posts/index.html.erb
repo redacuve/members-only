@@ -1,7 +1,9 @@
 <% @posts.each do |p| %>
 <ul>
   <li>
-    <%= p.author_id %>,
+    <% if logged? %>
+      <%= p.user.name %>,
+    <% end %>
     <%= p.title %>,
     <%= p.body %>,
   </li>
