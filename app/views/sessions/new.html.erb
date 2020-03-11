@@ -2,9 +2,15 @@
   <%= content_tag(:div, message) %>
 <% end %>
 <%= form_with(url: sessions_path, local: true) do |f| %>
-<%= f.label :email %>
-<%= f.email_field :email %>
-<%= f.label :password %>
-<%= f.password_field :password %>
-<%= f.submit "Log In" %>
+  <div class ="field">
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  <div>
+  <div class="actions">
+    <%= f.submit "Log In" %>
+  </div>
 <% end %>

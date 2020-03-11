@@ -1,11 +1,27 @@
-<% @posts.each do |p| %>
-<ul>
-  <li>
-    <% if logged? %>
-      <%= p.user.name %>,
+<table>
+  <thead>
+    <tr>
+      <% if logged? %>
+        <th>Author Name:</th>
+      <% end %>
+      <th>Title:</th>
+      <th>Post:</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <% if logged? %>
+          <td><%= post.user.name %></td>
+        <% end %>
+        <td><%= post.title %></td>
+        <td><%= post.body %></td>
+      </tr>
     <% end %>
-    <%= p.title %>,
-    <%= p.body %>,
-  </li>
-</ul>
+  </tbody>
+</table>
+
+<% if logged? %>
+  <%= link_to "Create new Post", new_post_path, class: "create-post" %>
 <% end %>

@@ -2,7 +2,7 @@
   <%= content_tag(:div, message) %>
 <% end %>
 <% if @post.errors.any? %>
-    <div>
+    <div id="error_explanation">
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
       <ul>
         <% @post.errors.full_messages.each do |message| %>
@@ -13,9 +13,15 @@
 <% end %>
 <%= form_with(model: @post, url: posts_path, local: true) do |f| %>
 <%= f.hidden_field :author_id, value: @current_user.id %>
-<%= f.label :title %>
-<%= f.text_field :title%>
-<%= f.label :body%>
-<%= f.text_area :body, size:"60x12" %>
-<%= f.submit "Create Post" %>
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title%>
+  </div>
+  <div class="field">
+    <%= f.label :body%>
+    <%= f.text_area :body, size:"60x12" %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Create Post" %>
+  </div>
 <% end %>
