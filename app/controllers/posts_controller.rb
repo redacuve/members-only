@@ -1,12 +1,11 @@
 class PostsController < ApplicationController
-  before_action :allow_posts, only: [:new, :create]
+  before_action :allow_posts, only: %i[new create]
 
   def new
     @post = Post.new
   end
 
   def index
-    # @user = current_user
     @posts = Post.all
   end
 
@@ -15,12 +14,12 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to posts_path
     else
-      render html: "intenta de nuevo"
+      flash.now[:danger] = 'Please submit the post again'
+      render :new
     end
   end
 
   def allow_posts
-    puts "logged:" + logged?.to_s
     redirect_to new_session_path unless logged?
   end
 
