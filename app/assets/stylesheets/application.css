@@ -13,3 +13,26 @@
  *= require_tree .
  *= require_self
  */
+
+ nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+ }
+
+ .app-name a {
+     font-size: 1.5rem;
+     text-decoration: none;
+ }
+
+ #error_explanation {
+     border: solid 1px red;
+ }
+
+ .field {
+    padding: 0.1rem;
+ }
+
+ .actions {
+    font-size: 1.5rem;
+ }
